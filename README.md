@@ -1,6 +1,6 @@
 ### requirement : 
-  1- Install Python (Last version)
-  2- pip install requirement.txt
+1- Install Python (Last version)
+2- pip install requirement.txt
 
 ## Structure
 
