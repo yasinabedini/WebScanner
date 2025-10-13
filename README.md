@@ -1,4 +1,4 @@
-### ## requirement : 
+### requirement : 
   1- Install Python (Last version)
   2- pip install requirement.txt
 
