@@ -1,0 +1,63 @@
+# Enterprise Web Scanner Configuration
+
+# Subfinder Configuration
+subfinder:
+  threads: 10
+  timeout: 30
+  sources:
+    - alienvault
+    - anubis
+    - bevigil
+    - binaryedge
+    - certspotter
+    - chaos
+    - chinaz
+    - censys
+    - crtsh
+    - dnsdumpster
+    - fofa
+    - github
+    - hackertarget
+    - intelx
+    - passivetotal
+    - quake
+    - rapiddns
+    - securitytrails
+    - shodan
+    - threatcrowd
+    - virustotal
+    - whoisxmlapi
+    - zoomeye
+
+# HTTPx Configuration  
+httpx:
+  threads: 50
+  timeout: 10
+  retries: 2
+  rate_limit: 150
+
+# Nuclei Configuration
+nuclei:
+  threads: 25
+  timeout: 5
+  retries: 1
+  rate_limit: 150
+  bulk_size: 25
+
+# Katana Configuration
+katana:
+  depth: 5
+  threads: 10
+  timeout: 10
+  
+# Scan Profiles
+profiles:
+  quick:
+    severity: ['critical', 'high']
+    depth: 2
+  standard:
+    severity: ['critical', 'high', 'medium']
+    depth: 3
+  comprehensive:
+    severity: ['critical', 'high', 'medium', 'low', 'info']
+    depth: 5
