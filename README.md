@@ -16,16 +16,13 @@ WebScanner
 
 # WebScanner
 
-------------
-
-
 ## Scan
 Scan & Fuzzing On Domains
 Example  : 
   ### Python ScannerV2.py <Domain>
   Python ScannerV3.py <Domain>
 
-<br>
+  
 ## Recon 
   Recon SubDomain, Find Live SubDomain
 
