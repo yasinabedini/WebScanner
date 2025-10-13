@@ -39,6 +39,10 @@ Example  :
   ### python SubdomainPortScanner.py <domain> [scan_mode]
 
   Scan Modes:
-    common   - Scan top 20 common ports (default)
-    extended - Scan top 1000 ports + common services
-    full     - Scan all 65535 ports (slow)
+  
+  common   - Scan top 20 common ports (default)
+    
+  extended - Scan top 1000 ports + common services
+    
+  full     - Scan all 65535 ports (slow)
+    
