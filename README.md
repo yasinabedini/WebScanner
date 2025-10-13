@@ -8,17 +8,17 @@
 WebScanner 
 
 |
-
-|--- tools
-
-|      |---- nuclei-templates
-
 |
-
+|--- tools
+|
+|      |---- nuclei-templates
+|
+|
+|
 |--- ScannerV2.py
-
+|
 |--- ScannerV3.py
-
+|
 |--- DomainV1.py 
 
 
