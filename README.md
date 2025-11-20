@@ -63,53 +63,37 @@ git --version
 
 ### Clone Repository
 
-bash
-git clone https://github.com/yasinabedini/cyberrecon-toolkit.git
-cd cyberrecon-toolkit
+```bash
+git clone https://github.com/yasinabedini/WebScanner.git
+cd WebScanner
+```
 
 ### Install Dependencies
 
-bash
+```bash
 pip install -r requirements.txt
+```
 
 **requirements.txt:**
-txt
+```txt
 reportlab>=4.0.0
 tqdm>=4.65.0
+```
 
-### External Tools Setup
-
-#### 1. Nuclei
-bash
-# Download from https://github.com/projectdiscovery/nuclei/releases
-# Place nuclei.exe in ./tools/ directory
-
-# Update templates
-./tools/nuclei.exe -update-templates
-
-#### 2. Katana
-bash
-# Download from https://github.com/projectdiscovery/katana/releases
-# Place katana.exe in ./tools/ directory
-
-#### 3. Subfinder
-bash
-# Download from https://github.com/projectdiscovery/subfinder/releases
-# Place subfinder.exe in ./tools/ directory
 
 ### Directory Structure
 
 
-cyberrecon-toolkit/
+WebScnanner/
 ├── tools/
 │   ├── nuclei.exe
 │   ├── katana.exe
 │   └── subfinder.exe
 ├── data/              # Raw scan outputs
 ├── reports/           # PDF reports
-├── NucleiScanner.py
-├── DataLeakageScanner.py
-├── SubdomainPortScanner.py
+├── Scanner.py
+├── Leakage.py
+├── Domain.py
 ├── requirements.txt
 └── README.md
 
@@ -117,16 +101,17 @@ cyberrecon-toolkit/
 
 ## 🎯 Tools
 
-### 1️⃣ Nuclei Vulnerability Scanner
+### 1️⃣ Scanner.py 
 
 Automated template-based vulnerability detection with real-time progress tracking.
 
 **Basic Usage:**
-bash
-python NucleiScanner.py https://example.com
+```bash
+python Scanner.py https://example.com
+```
 
 **Advanced Options:**
-bash
+```bash
 python NucleiScanner.py https://example.com \
 --severity critical,high \
 --rate-limit 150 \
@@ -145,6 +130,7 @@ python NucleiScanner.py https://example.com \
 **Output:**
 - Raw JSON: `data/nuclei_<target>_<timestamp>.json`
 - PDF Report: `reports/<target>_nuclei_<timestamp>.pdf`
+```
 
 ---
 
@@ -153,12 +139,12 @@ python NucleiScanner.py https://example.com \
 Intelligent web crawler with pattern-based sensitive data detection.
 
 **Basic Usage:**
-bash
-python DataLeakageScanner.py https://example.com
+```bash
+python Leakage.py https://example.com
 
 **Advanced Options:**
 bash
-python DataLeakageScanner.py https://example.com \
+python Leakage.py https://example.com \
 --depth 5 \
 --crawl-scope same-domain \
 --rate-limit 100 \
@@ -194,7 +180,7 @@ python DataLeakageScanner.py https://example.com \
 - Raw JSON: `data/katana_<target>_<timestamp>.json`
 - Findings JSON: `data/findings_<target>_<timestamp>.json`
 - PDF Report: `reports/<target>_leakage_<timestamp>.pdf`
-
+```
 ---
 
 ### 3️⃣ Subdomain Port Scanner
@@ -202,23 +188,23 @@ python DataLeakageScanner.py https://example.com \
 Automated subdomain discovery with intelligent port scanning.
 
 **Basic Usage:**
-bash
-python SubdomainPortScanner.py example.com
+```bash
+python Domain.py example.com
 
 **Scan Modes:**
 bash
 # Common ports (fast - 20 ports)
-python SubdomainPortScanner.py example.com -m common
+python Domain.py example.com -m common
 
 # Extended scan (balanced - 1000+ ports)
-python SubdomainPortScanner.py example.com -m extended
+python Domain.py example.com -m extended
 
 # Full scan (comprehensive - all 65535 ports)
-python SubdomainPortScanner.py example.com -m full
+python Domain.py example.com -m full
 
 **Advanced Options:**
 bash
-python SubdomainPortScanner.py example.com \
+python Domain.py example.com \
 -m extended \
 -t 1.5 \
 -w 200 \
@@ -242,67 +228,27 @@ LOW:      HTTP(80), HTTPS(443), DNS(53)
 **Output:**
 - Subdomains: `data/subdomains_<domain>_<timestamp>.txt`
 - PDF Report: `reports/<domain>_portscan_<timestamp>.pdf`
-
+```
 ---
 
 ## 📚 Examples
 
 ### Example 1: Full Vulnerability Assessment
 
-bash
+```bash
 # Step 1: Nuclei scan for vulnerabilities
-python NucleiScanner.py https://target.com --severity high,critical
+python Scanner.py https://target.com --severity high,critical
 
 # Step 2: Check for data leakage
-python DataLeakageScanner.py https://target.com --depth 5
+python Leakage.py https://target.com --depth 5
 
 # Step 3: Enumerate subdomains and ports
-python SubdomainPortScanner.py target.com -m extended
-
-### Example 2: Bug Bounty Recon
-
-bash
-# Fast reconnaissance
-python SubdomainPortScanner.py target.com -m common
-python NucleiScanner.py https://target.com --rate-limit 100
-
-# Deep inspection on interesting endpoints
-python DataLeakageScanner.py https://api.target.com --depth 4
-
-### Example 3: Red Team Assessment
-
-bash
-# Comprehensive scanning
-python SubdomainPortScanner.py target.com -m full -w 500
-python NucleiScanner.py https://target.com --update-templates
-python DataLeakageScanner.py https://target.com --depth 10
-
+python Domain.py target.com -m extended
+```
 ---
 
 ## 📊 Report Samples
 
-All tools generate **professional PDF reports** including:
-
-### Nuclei Reports
-- 📌 Executive Summary
-- 📊 Severity Distribution
-- 🎯 Risk Score Calculation
-- 📝 Detailed Findings (CVE, CVSS, CWE)
-- 💡 Remediation Recommendations
-
-### Data Leakage Reports
-- 📌 Executive Summary
-- 📊 Category Breakdown (Credentials, API Keys, etc.)
-- 🎯 Risk Assessment
-- 📝 Detailed Findings with Context
-- 🛡️ Security Recommendations
-
-### Port Scan Reports
-- 📌 Scan Statistics
-- 📊 Risk-based Port Classification
-- 🌐 Subdomain-to-IP Mapping
-- 📝 Detailed Port Findings
-- 🔒 Security Implications
 
 ---
 
@@ -323,79 +269,7 @@ By using this toolkit, you agree to use it responsibly and ethically.
 
 ---
 
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-**Issue:** `nuclei.exe not found`
-bash
-# Solution: Download and place in ./tools/ directory
-# https://github.com/projectdiscovery/nuclei/releases
-
-**Issue:** `Permission denied`
-bash
-# Solution: Make tools executable (Linux/Mac)
-chmod +x tools/nuclei.exe
-chmod +x tools/katana.exe
-chmod +x tools/subfinder.exe
-
-**Issue:** `reportlab not found`
-bash
-# Solution: Install dependencies
-pip install reportlab tqdm
-
-**Issue:** Slow port scanning
-bash
-# Solution: Increase workers and adjust timeout
-python SubdomainPortScanner.py target.com -w 500 -t 0.5
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these guidelines:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📝 Changelog
-
-### v2.0 (Current)
-- ✨ Added real-time progress tracking
-- ✨ Professional PDF report generation
-- ✨ Risk-based severity classification
-- ✨ Optimized regex patterns
-- ✨ CLI argument parsing with `-h` support
-- 🐛 Fixed indentation errors
-- 🚀 Performance improvements
-
-### v1.0
-- 🎉 Initial release
-- ✅ Nuclei integration
-- ✅ Katana crawler
-- ✅ Subfinder enumeration
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-
-MIT License
-
 Copyright (c) 2025 Yasin Abedini
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software...
 
 ---
 
@@ -404,16 +278,14 @@ copies of the Software...
 **Yasin Abedini**
 
 - 🌐 GitHub: [@yasinabedini](https://github.com/yasinabedini)
-- 📧 Email: your.email@example.com
-- 🐦 Twitter: [@yourtwitterhandle]
-
+- 📧 Email: yasinabedini.net@gmail.com
 ---
 
 ## 🌟 Star History
 
 If you find this toolkit useful, please ⭐ star the repository!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yasinabedini/cyberrecon-toolkit&type=Date)](https://star-history.com/#yasinabedini/cyberrecon-toolkit&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=yasinabedini/WebScanner&type=Date)](https://star-history.com/#yasinabedini/WebScanner&Date)
 
 ---
 
@@ -426,51 +298,10 @@ This toolkit integrates the following excellent open-source projects:
 - [Subfinder](https://github.com/projectdiscovery/subfinder) - ProjectDiscovery
 - [ReportLab](https://www.reportlab.com/) - PDF generation
 
----
-
-## 📞 Support
-
-Need help? Have questions?
-
-1. 📖 Check the [Wiki](https://github.com/yasinabedini/cyberrecon-toolkit/wiki)
-2. 🐛 Report bugs via [Issues](https://github.com/yasinabedini/cyberrecon-toolkit/issues)
-3. 💬 Join discussions in [Discussions](https://github.com/yasinabedini/cyberrecon-toolkit/discussions)
-
----
-
 <div align="center">
 
 **Made with ❤️ by security researchers, for security researchers**
 
-[⬆ Back to Top](#️-cyberrecon-toolkit)
+[⬆ Back to Top](#️-WebScanner)
 
 </div>
-
-
----
-
-## 🎁 فایل‌های اضافی پیشنهادی:
-
-### LICENSE (MIT)
-```txt
-MIT License
-
-Copyright (c) 2025 Yasin Abedini
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
