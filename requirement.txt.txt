@@ -1,2 +1,18 @@
+# ============================================
+# Nuclei Scanner Wrapper - Dependencies
+# ============================================
+# Python Version: 3.7+
+# Last Updated: 2025-11-20
+# ============================================
+
+# PDF Generation (Optional but Recommended)
+# -----------------------------------------
+# Used for generating PDF reports with charts and tables
+reportlab>=4.0.0
 tqdm>=4.65.0
-reportlab>=4.1.0
+# ============================================
+# Notes:
+# - All other modules are Python standard library
+# - reportlab is the ONLY external dependency
+# - Without reportlab, JSON/HTML/Console outputs still work
+# ============================================
