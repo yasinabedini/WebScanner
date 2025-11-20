@@ -1,5 +1,0 @@
-www.spardaz.ir
-www.staging.spardaz.ir
-www.payment.spardaz.ir
-www.survey.spardaz.ir
-mail.spardaz.ir
