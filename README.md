@@ -83,7 +83,7 @@ tqdm>=4.65.0
 
 ### Directory Structure
 
-
+```txt
 WebScnanner/
 ├── tools/
 │   ├── nuclei.exe
@@ -96,7 +96,7 @@ WebScnanner/
 ├── Domain.py
 ├── requirements.txt
 └── README.md
-
+```
 ---
 
 ## 🎯 Tools
