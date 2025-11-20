@@ -138,100 +138,56 @@ Examples:
 
 ---
 
-### 2️⃣ Data Leakage Scanner
+### 2️⃣ Leakage.py
 
 Intelligent web crawler with pattern-based sensitive data detection.
 
 **Basic Usage:**
 ```bash
-python Leakage.py https://example.com
+usage: Leakage.py [-h] [-o OUTPUT] domain
 
-**Advanced Options:**
-bash
-python Leakage.py https://example.com \
---depth 5 \
---crawl-scope same-domain \
---rate-limit 100 \
---timeout 15
+positional arguments:
+  domain               Target domain to scan
 
-**Command Line Options:**
+options:
+  -h, --help           show this help message and exit
+  -o, --output OUTPUT  Output directory (default: crawl_results)
 
--h, --help              Show help message
--d, --depth             Maximum crawl depth (default: 3)
--cs, --crawl-scope      Crawl scope: same-domain, same-host (default: same-domain)
--rl, --rate-limit       Max requests per second (default: 150)
--t, --timeout           Request timeout in seconds (default: 10)
-
-**Detection Patterns:**
-
-✓ Email addresses (general + Iranian domains)
-✓ Iranian phone numbers (09xx-xxx-xxxx)
-✓ API keys (generic patterns)
-✓ AWS credentials (Access Key, Secret Key)
-✓ JWT tokens
-✓ Private SSH/SSL keys
-✓ Database connection strings
-✓ Google API keys
-✓ Stripe/PayPal keys
-✓ OAuth tokens
-✓ IP addresses (internal networks)
-✓ Credit card numbers (basic pattern)
-✓ Iranian national IDs
-✓ JSON Web Tokens
-✓ Bearer tokens
-
-**Output:**
-- Raw JSON: `data/katana_<target>_<timestamp>.json`
-- Findings JSON: `data/findings_<target>_<timestamp>.json`
-- PDF Report: `reports/<target>_leakage_<timestamp>.pdf`
+Examples:
+  Leakage.py example.com
+  Leakage.py https://example.com -o my_results
 ```
 ---
 
-### 3️⃣ Subdomain Port Scanner
-
+### 3️⃣ Domain.py
 Automated subdomain discovery with intelligent port scanning.
 
 **Basic Usage:**
 ```bash
-python Domain.py example.com
+usage: Domain.py [-h] [-m {common,extended,full}] [-t TIMEOUT] [-w WORKERS] [--no-pdf] domain
 
-**Scan Modes:**
-bash
-# Common ports (fast - 20 ports)
-python Domain.py example.com -m common
+positional arguments:
+  domain                Target domain to scan
 
-# Extended scan (balanced - 1000+ ports)
-python Domain.py example.com -m extended
+options:
+  -h, --help            show this help message and exit
+  -m, --mode {common,extended,full}
+                        Scan mode (default: common)
+  -t, --timeout TIMEOUT
+                        Port timeout in seconds (default: 1.0)
+  -w, --workers WORKERS
+                        Max concurrent threads (default: 100)
+  --no-pdf              Skip PDF generation
 
-# Full scan (comprehensive - all 65535 ports)
-python Domain.py example.com -m full
+Examples:
+  Domain.py example.com
+  Domain.py example.com -m extended
+  Domain.py example.com -m full -t 2.0 -w 200
 
-**Advanced Options:**
-bash
-python Domain.py example.com \
--m extended \
--t 1.5 \
--w 200 \
---no-pdf
-
-**Command Line Options:**
-
--h, --help              Show help message
--m, --mode              Scan mode: common, extended, full (default: common)
--t, --timeout           Port timeout in seconds (default: 1.0)
--w, --workers           Max concurrent threads (default: 100)
---no-pdf                Skip PDF generation
-
-**Port Risk Levels:**
-
-CRITICAL: FTP(21), Telnet(23), RDP(3389), VNC(5900), SMB(445)
-HIGH:     SSH(22), MySQL(3306), PostgreSQL(5432), Redis(6379), MongoDB(27017)
-MEDIUM:   SMTP(25), POP3(110), IMAP(143), HTTP-Proxy(8080)
-LOW:      HTTP(80), HTTPS(443), DNS(53)
-
-**Output:**
-- Subdomains: `data/subdomains_<domain>_<timestamp>.txt`
-- PDF Report: `reports/<domain>_portscan_<timestamp>.pdf`
+Scan Modes:
+  common   - Top 20 common ports (fast)
+  extended - Top 1000 ports + services (balanced)
+  full     - All 65535 ports (slow)
 ```
 ---
 
