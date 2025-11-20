@@ -112,24 +112,28 @@ python Scanner.py https://example.com
 
 **Advanced Options:**
 ```bash
-python NucleiScanner.py https://example.com \
---severity critical,high \
---rate-limit 150 \
---timeout 10 \
---retries 2
 
-**Command Line Options:**
+usage: Scanner.py [-h] -d DOMAIN [-o OUTPUT] [-v] [--skip-subdomain] [--skip-ports] [--tools-dir TOOLS_DIR]
 
--h, --help              Show help message
--s, --severity          Filter by severity (info,low,medium,high,critical)
--rl, --rate-limit       Max requests per second (default: 150)
--t, --timeout           Request timeout in seconds (default: 10)
--r, --retries           Number of retries (default: 1)
---update-templates      Update Nuclei templates before scan
+Enterprise Web Security Scanner - Automated reconnaissance and vulnerability scanning
 
-**Output:**
-- Raw JSON: `data/nuclei_<target>_<timestamp>.json`
-- PDF Report: `reports/<target>_nuclei_<timestamp>.pdf`
+options:
+  -h, --help            show this help message and exit
+  -d, --domain DOMAIN   Target domain to scan
+  -o, --output OUTPUT   Output directory for results (default: results)
+  -v, --verbose         Enable verbose output
+  --skip-subdomain      Skip subdomain enumeration phase
+  --skip-ports          Skip port scanning phase
+  --tools-dir TOOLS_DIR
+                        Custom tools directory (default: ./tools)
+
+Examples:
+  Scanner.py -d example.com
+  Scanner.py -d example.com -v
+  Scanner.py -d example.com --skip-ports
+  Scanner.py -d example.com -o /path/to/results
+  Scanner.py -d example.com --tools-dir ./custom_tools
+
 ```
 
 ---
