@@ -1,10 +1,9 @@
-# 🛡️ CyberRecon Toolkit
+# 🛡️ Web Scanner Toolkit
 
 <div align="center">
 
 ![Version](https://img.shields.io/badge/version-2.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.8+-green.svg)
-![License](https://img.shields.io/badge/license-MIT-orange.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 
 **A Professional Offensive Security Reconnaissance Suite**
@@ -19,7 +18,7 @@
 
 ## 📖 Overview
 
-**CyberRecon Toolkit** is a comprehensive offensive security suite designed for penetration testers, bug bounty hunters, and security researchers. It combines three powerful tools into one unified framework:
+**Web Scanner Toolkit** is a comprehensive offensive security suite designed for penetration testers, bug bounty hunters, and security researchers.:
 
 1. **🎯 Nuclei Vulnerability Scanner** - Advanced template-based vulnerability detection
 2. **🕵️ Data Leakage Scanner** - Intelligent web crawling with sensitive data detection
@@ -32,9 +31,7 @@
 ### 🎯 Nuclei Scanner (v4.5)
 - ✅ **Real-time progress tracking** with live statistics
 - ✅ **Professional PDF reports** with severity analysis
-- ✅ **Template management** with automatic updates
 - ✅ **Multi-threading support** for faster scans
-- ✅ **Risk scoring** based on CVSS metrics
 - ✅ **Executive summaries** for stakeholders
 
 ### 🕵️ Data Leakage Scanner (v2.0)
@@ -43,14 +40,11 @@
 - ✅ **Pattern matching** for API keys, credentials, tokens
 - ✅ **Iranian phone/email** specific patterns
 - ✅ **Comprehensive PDF reports** with risk assessment
-- ✅ **Live progress tracking** during crawls
 
 ### 🌐 Subdomain Port Scanner (v2.0)
 - ✅ **Automated subdomain discovery** via Subfinder
 - ✅ **Multi-threaded port scanning** (up to 65535 ports)
-- ✅ **Risk-based port classification** (Critical/High/Medium/Low)
 - ✅ **DNS resolution** with health checks
-- ✅ **Three scan modes**: Common, Extended, Full
 - ✅ **Detailed PDF reports** with findings breakdown
 
 ---
@@ -62,8 +56,10 @@
 # Python 3.8 or higher
 python --version
 
+
 # Git
 git --version
+```
 
 ### Clone Repository
 
