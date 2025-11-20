@@ -10,8 +10,6 @@
 
 *Automated vulnerability scanning, data leakage detection, and port enumeration*
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Tools](#-tools) • [Examples](#-examples)
-
 </div>
 
 ---
